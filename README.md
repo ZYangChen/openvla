@@ -26,7 +26,8 @@ GPU: NVIDIA Tesla A100
 conda create -n openvla python=3.10 -y
 conda activate openvla
 
-conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y  # UPDATE ME!
+# conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y  # 原版的环境
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.1 -c pytorch -c nvidia -y
 
 git clone https://github.com/ZYangChen/openvla.git
 cd openvla
