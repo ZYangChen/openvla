@@ -9,8 +9,40 @@
 [**Getting Started**](#getting-started) | [**Pretrained VLAs**](#pretrained-vlas) | [**Installation**](#installation) | [**Fine-Tuning OpenVLA via LoRA**](#fine-tuning-openvla-via-lora) | [**Fully Fine-Tuning OpenVLA**](#fully-fine-tuning-openvla) |
 [**Training VLAs from Scratch**](#training-vlas-from-scratch) | [**Evaluating OpenVLA**](#evaluating-openvla) | [**Project Website**](https://openvla.github.io/)
 
+[**环境配置**](#环境配置)
+
 
 <hr style="border: 2px solid gray;"></hr>
+
+## 复现环境配置
+
+复现结果使用以下设备及环境：
+
+GPU: NVIDIA Tesla A100
+
+硬件架构：| NVIDIA-SMI 535.129.03             Driver Version: 535.129.03   CUDA Version: 12.2     |
+
+```bash
+conda create -n openvla python=3.10 -y
+conda activate openvla
+
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y  # UPDATE ME!
+
+git clone https://github.com/ZYangChen/openvla.git
+cd openvla
+cd dlimp_openvla
+pip install -e .
+pip uninstall sympy -y
+pip install sympy==1.13.1
+cd ..
+pip install -e .
+
+# Install Flash Attention 2 for training (https://github.com/Dao-AILab/flash-attention)
+#   =>> If you run into difficulty, try `pip cache remove flash_attn` first
+pip install packaging ninja
+ninja --version; echo $?  # Verify Ninja --> should return exit code "0"
+pip install "flash-attn==2.5.5" --no-build-isolation
+```
 
 ## Latest Updates
 - [2025-03-03] OFT (Optimized Fine-Tuning recipe for VLAs) was recently released! Compared to vanilla OpenVLA fine-tuning, OFT enables 25-50x faster inference speed, higher task success rates, multiple input images, and high-frequency bimanual robot control. Unlike FAST, OFT uses continuous actions for greater model quality. See project website [here](https://openvla-oft.github.io/).
