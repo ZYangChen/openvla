@@ -45,16 +45,6 @@ ninja --version; echo $?  # Verify Ninja --> should return exit code "0"
 pip install "flash-attn==2.5.5" --no-build-isolation
 ```
 
-## Latest Updates
-- [2025-03-03] OFT (Optimized Fine-Tuning recipe for VLAs) was recently released! Compared to vanilla OpenVLA fine-tuning, OFT enables 25-50x faster inference speed, higher task success rates, multiple input images, and high-frequency bimanual robot control. Unlike FAST, OFT uses continuous actions for greater model quality. See project website [here](https://openvla-oft.github.io/).
-- [2025-01-16] The FAST action tokenizer was recently released! Compared to vanilla OpenVLA-style 256-bin action discretization, FAST allows action chunks to be compressed into fewer tokens, speeding up inference by up to 15x when using discrete robot actions. See project website [here](https://www.physicalintelligence.company/research/fast).
-- [2024-10-15] Added a [VLA Performance Troubleshooting](#vla-performance-troubleshooting) section to the README with best practices for debugging poor VLA performance after fine-tuning.
-- [2024-09-04] Added LIBERO simulation benchmark fine-tuning experiments to paper (see v2 on [arXiv](https://arxiv.org/abs/2406.09246));
-  added instructions for reproducing OpenVLA results in [LIBERO Simulation Benchmark Evaluations](#libero-simulation-benchmark-evaluations) section
-- [2024-08-14] Added new section, [Evaluating OpenVLA](#evaluating-openvla), with instructions for running BridgeData V2 WidowX robot evals
-- [2024-07-08] Added new sections: [Fine-Tuning OpenVLA via LoRA](#fine-tuning-openvla-via-lora), [Fully Fine-Tuning OpenVLA](#fully-fine-tuning-openvla)
-- [2024-06-13] Initial release
-
 <hr style="border: 2px solid gray;"></hr>
 
 A simple and scalable codebase for training and fine-tuning vision-language-action models (VLAs) for generalist robotic 
