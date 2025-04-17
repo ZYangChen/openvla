@@ -1,6 +1,6 @@
 # OpenVLA: An Open-Source Vision-Language-Action Model
 
-[**官方文档**](https://openvla.github.io/) | [**复现环境**](#复现环境)
+[**官方文档**](https://openvla.github.io/) | [**复现环境**](#复现环境) | [**LIBERO**](#LIBERO)
 
 
 <hr style="border: 2px solid gray;"></hr>
@@ -46,6 +46,31 @@ pip install "flash-attn==2.5.5" --no-build-isolation
 ```
 
 <hr style="border: 2px solid gray;"></hr>
+
+## LIBERO
+
+在已有环境上进一步配置
+
+```bash
+pip install -r experiments/robot/libero/libero_requirements.txt #在openvla目录下
+
+git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git
+cd LIBERO
+pip install -e .
+```
+
+
+| Method | LIBERO-Spatial | LIBERO-Object | LIBERO-Goal | LIBERO-Long | Average |
+|--------|----------------|---------------|-------------|-------------|---------|
+| Diffusion Policy from scratch | 78.3 ± 1.1% | **92.5 ± 0.7%** | 68.3 ± 1.2% | 50.5 ± 1.3% | 72.4 ± 0.7% |
+| Octo fine-tuned | 78.9 ± 1.0% | 85.7 ± 0.9% | **84.6 ± 0.9%** | 51.1 ± 1.3% | 75.1 ± 0.6% |
+| OpenVLA fine-tuned | **84.7 ± 0.9%** | 88.4 ± 0.8% | 79.2 ± 1.0% | **53.7 ± 1.3%** | **76.5 ± 0.6%** |
+
+Each success rate is the average over 3 random seeds x 500 rollouts each (10 tasks x 50 rollouts per task).
+
+
+<hr style="border: 2px solid gray;"></hr>
+
 
 A simple and scalable codebase for training and fine-tuning vision-language-action models (VLAs) for generalist robotic 
 manipulation:
