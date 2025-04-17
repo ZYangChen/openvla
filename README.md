@@ -7,7 +7,7 @@
 
 ## 官方文档
 
-[![Homepage](https://img.shields.io/badge/Homepage-8A2BE2)](https://openvla.github.io/)
+[![Homepage](https://img.shields.io/badge/Homepage-blue?style=for-the-badge))](https://openvla.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-2406.09246-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2406.09246)
 [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=for-the-badge)](https://huggingface.co/openvla/openvla-7b)
 [![License](https://img.shields.io/github/license/TRI-ML/prismatic-vlms?style=for-the-badge)](LICENSE)
@@ -51,6 +51,8 @@ pip install "flash-attn==2.5.5" --no-build-isolation
 
 ## LIBERO
 
+### 环境
+
 在已有环境上进一步配置
 
 ```bash
@@ -61,6 +63,35 @@ cd LIBERO
 pip install -e .
 ```
 
+### 权重
+
+
+
+```bash
+pip install -U huggingface_hub
+
+export HF_ENDPOINT=https://hf-mirror.com
+
+# 下载fine-tuned OpenVLA via LoRA (r=32) on four LIBERO task suites independently: LIBERO-Spatial, LIBERO-Object, LIBERO-Goal, and LIBERO-10 (also called LIBERO-Long).
+cd LIBERO
+huggingface-cli download --resume-download openvla/openvla-7b-finetuned-libero-spatial --local-dir ./weight/libero
+```
+
+The four checkpoints are available on Hugging Face:
+* [openvla/openvla-7b-finetuned-libero-spatial](https://huggingface.co/openvla/openvla-7b-finetuned-libero-spatial)
+* [openvla/openvla-7b-finetuned-libero-object](https://huggingface.co/openvla/openvla-7b-finetuned-libero-object)
+* [openvla/openvla-7b-finetuned-libero-goal](https://huggingface.co/openvla/openvla-7b-finetuned-libero-goal)
+* [openvla/openvla-7b-finetuned-libero-10](https://huggingface.co/openvla/openvla-7b-finetuned-libero-10)
+
+
+```bash
+# Launch LIBERO-Spatial evals
+python experiments/robot/libero/run_libero_eval.py \
+  --model_family openvla \
+  --pretrained_checkpoint LIBERO/weight/openvla-7b-finetuned-libero-spatial \
+  --task_suite_name libero_spatial \
+  --center_crop True
+```
 
 | Method | LIBERO-Spatial | LIBERO-Object | LIBERO-Goal | LIBERO-Long | Average |
 |--------|----------------|---------------|-------------|-------------|---------|
