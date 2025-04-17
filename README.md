@@ -7,9 +7,9 @@
 
 ## 官方文档
 
+[![Homepage](https://img.shields.io/openvla.github.io?style=for-the-badge)](Homepage)
 [![arXiv](https://img.shields.io/badge/arXiv-2406.09246-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2406.09246)
 [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=for-the-badge)](https://huggingface.co/openvla/openvla-7b)
-[![License](https://img.shields.io/github/license/TRI-ML/prismatic-vlms?style=for-the-badge)](LICENSE)
 
 ## 复现环境配置
 
