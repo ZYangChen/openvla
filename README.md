@@ -78,7 +78,7 @@ pip install -U huggingface_hub
 export HF_ENDPOINT=https://hf-mirror.com
 
 # 下载fine-tuned OpenVLA via LoRA (r=32) on four LIBERO task suites independently: LIBERO-Spatial, LIBERO-Object, LIBERO-Goal, and LIBERO-10 (also called LIBERO-Long).
-huggingface-cli download --resume-download openvla/openvla-7b-finetuned-libero-spatial --local-dir ./weight/libero
+huggingface-cli download --resume-download openvla/openvla-7b-finetuned-libero-spatial --local-dir ./weight/libero/openvla-7b-finetuned-libero-spatial
 
 ```
 
