@@ -7,7 +7,7 @@
 
 ## 官方文档
 
-[![Homepage](https://img.shields.io/badge/Homepage-blue?style=for-the-badge))](https://openvla.github.io/)
+[![Homepage](https://img.shields.io/badge/Homepage-blue?style=for-the-badge)](https://openvla.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-2406.09246-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2406.09246)
 [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=for-the-badge)](https://huggingface.co/openvla/openvla-7b)
 [![License](https://img.shields.io/github/license/TRI-ML/prismatic-vlms?style=for-the-badge)](LICENSE)
@@ -29,7 +29,8 @@ conda create -n openvla python=3.10 -y
 conda activate openvla
 
 # conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y  # 原版的环境
-conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.1 -c pytorch -c nvidia -y
+# 原论文强调使用 Python 3.10.13、PyTorch 2.2.0、transformers 4.40.1 和 flash-attn 2.5.5 在 NVIDIA A100 GPU 上
+conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cuda=12.1 -c pytorch -c nvidia -y
 
 git clone https://github.com/ZYangChen/openvla.git
 cd openvla
@@ -61,11 +62,15 @@ pip install -r experiments/robot/libero/libero_requirements.txt #在openvla目�
 git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git
 cd LIBERO
 pip install -e .
+
+apt-get install libegl1 mesa-utils libgl1-mesa-glx
 ```
 
+### 数据集
+
+下载地址：https://libero-project.github.io/datasets
+
 ### 权重
-
-
 
 ```bash
 pip install -U huggingface_hub
@@ -73,8 +78,8 @@ pip install -U huggingface_hub
 export HF_ENDPOINT=https://hf-mirror.com
 
 # 下载fine-tuned OpenVLA via LoRA (r=32) on four LIBERO task suites independently: LIBERO-Spatial, LIBERO-Object, LIBERO-Goal, and LIBERO-10 (also called LIBERO-Long).
-cd LIBERO
 huggingface-cli download --resume-download openvla/openvla-7b-finetuned-libero-spatial --local-dir ./weight/libero
+
 ```
 
 The four checkpoints are available on Hugging Face:
@@ -86,11 +91,27 @@ The four checkpoints are available on Hugging Face:
 
 ```bash
 # Launch LIBERO-Spatial evals
+#CUDA_VISIBLE_DEVICES=1 MUJOCO_EGL_DEVICE_ID=1 
 python experiments/robot/libero/run_libero_eval.py \
   --model_family openvla \
-  --pretrained_checkpoint LIBERO/weight/openvla-7b-finetuned-libero-spatial \
+  --pretrained_checkpoint weight/libero/openvla-7b-finetuned-libero-spatial \
   --task_suite_name libero_spatial \
+  --use_wandb False \
   --center_crop True
+
+# Do you want to specify a custom path for the dataset folder? (Y/N):
+Y
+
+# Please enter the path to the dataset folder:
+/remote-home/path_to_your_root/vla/openvla/datasets # 你的数据集路径 <PATH TO DATASET FOLDER>
+```
+
+或者
+
+```bash
+vim /root/.libero/config.yaml
+
+datasets: /remote-home/path_to_your_root/vla/openvla/datasets
 ```
 
 | Method | LIBERO-Spatial | LIBERO-Object | LIBERO-Goal | LIBERO-Long | Average |
