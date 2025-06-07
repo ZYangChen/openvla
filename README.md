@@ -37,15 +37,15 @@ conda create -n openvla python=3.10 -y
 conda activate openvla
 
 # conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y  # 原版的环境
-# 原论文强调使用 Python 3.10.13、PyTorch 2.2.0、transformers 4.40.1 和 flash-attn 2.5.5 在 NVIDIA A100 GPU 上
+# 原论文指出该项目要满足Python 3.10.13、PyTorch 2.2.0、transformers 4.40.1 和 flash-attn 2.5.5的环境
 conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cuda=12.1 -c pytorch -c nvidia -y
 
 git clone https://github.com/ZYangChen/openvla.git
 cd openvla
 cd dlimp_openvla
 pip install -e .
-pip uninstall sympy -y
-pip install sympy==1.13.1
+# pip uninstall sympy -y #若有环境冲突，可尝试该过程
+# pip install sympy==1.13.1
 cd ..
 pip install -e .
 
