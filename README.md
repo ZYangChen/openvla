@@ -102,6 +102,11 @@ The four checkpoints are available on Hugging Face:
 * [openvla/openvla-7b-finetuned-libero-goal](https://huggingface.co/openvla/openvla-7b-finetuned-libero-goal)
 * [openvla/openvla-7b-finetuned-libero-10](https://huggingface.co/openvla/openvla-7b-finetuned-libero-10)
 
+### 推理
+
+#### e.g. LIBERO-Spatial
+
+数据集路径可以在推理时设置，也可以直接修改config.yaml
 
 ```bash
 # Launch LIBERO-Spatial evals
