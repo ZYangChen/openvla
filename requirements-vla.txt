@@ -1,0 +1,14 @@
+accelerate>=0.25.0
+draccus==0.8.0
+peft==0.11.1
+transformers==4.40.1
+timm==0.9.10
+tokenizers==0.19.1
+tensorflow_datasets==4.9.3
+json-numpy 
+jsonlines 
+matplotlib 
+rich
+wandb
+tensorflow_graphics==2021.12.3
+sentencepiece==0.1.99
