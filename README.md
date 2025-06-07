@@ -70,13 +70,14 @@ pip install "flash-attn==2.5.5" --no-build-isolation
 
 ```bash
 pip install -r experiments/robot/libero/libero_requirements.txt #在openvla目录下
-
 git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git
 cd LIBERO
 pip install -e .
 
 apt-get install libegl1 mesa-utils libgl1-mesa-glx
 ```
+
+也可以考虑手动下载[LIBERO库](https://github.com/Lifelong-Robot-Learning/LIBERO)。
 
 ### 数据集
 
