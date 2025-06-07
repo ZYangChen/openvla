@@ -51,7 +51,7 @@ pip install -e .
 # pip uninstall sympy -y #若有环境冲突，可尝试该过程
 # pip install sympy==1.13.1
 cd ..
-pip install -e .
+pip install -e . --no-deps # dlimp已经装过
 
 # Install Flash Attention 2 for training (https://github.com/Dao-AILab/flash-attention)
 #   =>> If you run into difficulty, try `pip cache remove flash_attn` first
