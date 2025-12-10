@@ -61,6 +61,9 @@ ninja --version; echo $?  # Verify Ninja --> should return exit code "0"
 pip install "flash-attn==2.5.5" --no-build-isolation
 ```
 
+如果用Conda环境安装报错libtorch_cpu.so中缺少了iJIT_NotifyEvent这个符号，可考虑改用wheel安装环境。但是wheel安装环境后按如下步骤配置环境，可能出现版本冲突问题，这一问题可以参考我在[issue #1 回答中的步骤](https://github.com/ZYangChen/openvla/issues/1#issuecomment-3635885130)解决。
+
+
 <hr style="border: 2px solid gray;"></hr>
 
 ## LIBERO
